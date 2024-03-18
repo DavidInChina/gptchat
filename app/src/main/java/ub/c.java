@@ -1,0 +1,35 @@
+package Ub;
+
+import nf.AbstractC4825e;
+import of.EnumC5000a;
+import pf.AbstractC5156c;
+
+/* loaded from: classes2.dex */
+public final class c extends AbstractC5156c {
+
+    /* renamed from: Y  reason: collision with root package name */
+    public e f17593Y;
+
+    /* renamed from: Z  reason: collision with root package name */
+    public /* synthetic */ Object f17594Z;
+
+    /* renamed from: h0  reason: collision with root package name */
+    public final /* synthetic */ e f17595h0;
+
+    /* renamed from: i0  reason: collision with root package name */
+    public int f17596i0;
+
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public c(e eVar, AbstractC4825e abstractC4825e) {
+        super(abstractC4825e);
+        this.f17595h0 = eVar;
+    }
+
+    @Override // pf.AbstractC5154a
+    public final Object invokeSuspend(Object obj) {
+        this.f17594Z = obj;
+        this.f17596i0 |= Integer.MIN_VALUE;
+        this.f17595h0.d(this);
+        return EnumC5000a.f41328Y;
+    }
+}

@@ -1,0 +1,91 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" />
+    <style>
+            html,body {height: 100%; width: 100%; overflow:hidden; position: fixed; margin:0; padding:0}
+        </style>
+    <!-- Setup the Arkose API -->
+    <script crossorigin="anonymous" data-callback="setupEnforcement" onerror="jsLoadError()" src="" async defer ></script>
+    <script type="text/javascript">
+        var enforcement;
+        function jsLoadError() {
+                 response = {"error":"Challenge load error."}
+                 window.ARKOSE.onError(JSON.stringify(response));
+            }
+
+        // Setup the enforcement API
+        function setupEnforcement(arkoseEnforcement) {
+            enforcement = arkoseEnforcement
+            var arkose = arkoseEnforcement.setConfig({
+                selector: '#challenge',
+                publicKey: '',
+                // We are using 'inline' as we want the session to be created as soon as the page loads
+                mode: 'inline',
+                // DataExchange capability
+                data: { blob: "" },
+                // Language code
+                language: '',
+                isSDK: true,
+               // Accessibility setting to ensure that users employing Assistive Technology do not accidentally leave the lightbox before interacting with the challenge
+               accessibilitySettings: {
+                    lockFocusToModal: true
+                },
+                // These are the functions that can be called when the enforcement API is triggered
+                // Callback function invoked when a session is classified as not needing a challenge or a challenge has been successfully completed.
+                onCompleted: function (response) {
+                    // the token you will need to send to your back-end server for verification.
+                    window.ARKOSE.onCompleted(JSON.stringify(response));
+                },
+                // Callback function invoked when the EC is hidden. For example, this happens after an EC is completed or if the user clicks the close button. Note that the close button only appears when in Lightbox mode.
+                onHide: function () {
+                    window.ARKOSE.onHide("onHide");
+                },
+                // Callback function invoked when the Enforcement is ready. The Enforcement cannot be triggered before this event. You may want to disable the UI you are protecting until this event has been triggered.
+                onReady: function () {
+                    window.ARKOSE.onReady();
+                },
+                onDataRequest: function (response) {
+                    window.ARKOSE.onDataRequest(JSON.stringify(response.requested.sdk));
+                },
+                // Callback invoked after the Enforcement resets. Typically occurs after a challenge has been successfully answered.
+                onReset: function () {
+                    window.ARKOSE.onReset();
+                },
+                // Callback invoked when the Enforcement is running and Arkose Detect is analyzing the user intent. The onShow method will also be invoked when an Enforcement Challenge is re-displayed (e.g. if the user closes the EC and tries to continue). Note that the close button only appears when in Lightbox mode.
+                onShow: function () {
+                     window.ARKOSE.onShow();
+                },
+                // Callback invoked when the Enforcement Challenge is displayed. The onShown method will only be invoked the first time an Enforcement Challenge is displayed.
+                onShown: function () {
+                     window.ARKOSE.onShown();
+                },
+                // A callback invoked when the an Enforcement Challenge is suppressed (i.e. A session was classified as not requiring a challenge).
+                onSuppress: function () {
+                 window.ARKOSE.onSuppress();
+                },
+                // A callback invoked when an error occurs in the loading of the challenge.
+                onError: function (response) {
+                 window.ARKOSE.onError(JSON.stringify(response)); // An error code representing the error that occurred during the loading of the challenge.
+                },
+                // Callback function invoked when a challenge has failed (the user has failed the challenge multiple times and is not allowed to continue the session).
+                onFailed: function (response) {
+                window.ARKOSE.onFailed(JSON.stringify(response)); // the token you will need to send to your back-end server for verification for user challenge failed.
+                },
+                 onResize: function (response) {
+                 window.ARKOSE.onResize(JSON.stringify(response));
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+     function fingerprintData(dataCollection) {
+        enforcement.dataResponse(dataCollection)
+    }
+    function resetEC() {
+         enforcement.reset();
+       }
+   </script>
+</head>
+<!-- This is the element into which the challenge will be rendered if necessary -->
+<body id="challenge" ></body>
+</html>

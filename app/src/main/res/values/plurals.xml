@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="dalle_finished_creating">
+        <item quantity="one">Created %1$d image</item>
+        <item quantity="other">Created %1$d images</item>
+    </plurals>
+    <plurals name="selected_cell">
+        <item quantity="one">%1$d cell</item>
+        <item quantity="other">%1$d cells</item>
+    </plurals>
+    <plurals name="selected_column">
+        <item quantity="one">%1$d column</item>
+        <item quantity="other">%1$d columns</item>
+    </plurals>
+    <plurals name="selected_row">
+        <item quantity="one">%1$d row</item>
+        <item quantity="other">%1$d rows</item>
+    </plurals>
+</resources>

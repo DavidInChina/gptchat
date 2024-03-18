@@ -1,0 +1,37 @@
+package rc;
+
+import nf.AbstractC4825e;
+import pf.AbstractC5156c;
+
+/* renamed from: rc.J  reason: case insensitive filesystem */
+/* loaded from: classes.dex */
+public final class C5446J extends AbstractC5156c {
+
+    /* renamed from: Y  reason: collision with root package name */
+    public Object f44787Y;
+
+    /* renamed from: Z  reason: collision with root package name */
+    public boolean f44788Z;
+
+    /* renamed from: h0  reason: collision with root package name */
+    public /* synthetic */ Object f44789h0;
+
+    /* renamed from: i0  reason: collision with root package name */
+    public final /* synthetic */ C5451O f44790i0;
+
+    /* renamed from: j0  reason: collision with root package name */
+    public int f44791j0;
+
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public C5446J(C5451O c5451o, AbstractC4825e abstractC4825e) {
+        super(abstractC4825e);
+        this.f44790i0 = c5451o;
+    }
+
+    @Override // pf.AbstractC5154a
+    public final Object invokeSuspend(Object obj) {
+        this.f44789h0 = obj;
+        this.f44791j0 |= Integer.MIN_VALUE;
+        return this.f44790i0.c(false, this);
+    }
+}

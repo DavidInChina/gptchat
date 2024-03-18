@@ -1,0 +1,50 @@
+package ee;
+
+import Ng.F;
+import com.google.android.gms.internal.play_billing.N;
+import nf.AbstractC4825e;
+import of.EnumC5000a;
+import pf.AbstractC5163j;
+
+/* loaded from: classes.dex */
+public final class x extends AbstractC5163j implements wf.n {
+
+    /* renamed from: Y  reason: collision with root package name */
+    public /* synthetic */ Object f29361Y;
+
+    /* renamed from: Z  reason: collision with root package name */
+    public final /* synthetic */ C2881B f29362Z;
+
+    /* renamed from: h0  reason: collision with root package name */
+    public final /* synthetic */ long f29363h0;
+
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public x(C2881B c2881b, long j6, AbstractC4825e abstractC4825e) {
+        super(2, abstractC4825e);
+        this.f29362Z = c2881b;
+        this.f29363h0 = j6;
+    }
+
+    @Override // pf.AbstractC5154a
+    public final AbstractC4825e create(Object obj, AbstractC4825e abstractC4825e) {
+        x xVar = new x(this.f29362Z, this.f29363h0, abstractC4825e);
+        xVar.f29361Y = obj;
+        return xVar;
+    }
+
+    @Override // wf.n
+    public final Object invoke(Object obj, Object obj2) {
+        return ((x) create((F) obj, (AbstractC4825e) obj2)).invokeSuspend(jf.y.f36177a);
+    }
+
+    @Override // pf.AbstractC5154a
+    public final Object invokeSuspend(Object obj) {
+        EnumC5000a enumC5000a = EnumC5000a.f41328Y;
+        N.B0(obj);
+        F f6 = (F) this.f29361Y;
+        C2881B c2881b = this.f29362Z;
+        long j6 = this.f29363h0;
+        Ad.l.O0(f6, null, null, new v(c2881b, j6, null), 3);
+        return Ad.l.O0(f6, null, null, new w(c2881b, j6, null), 3);
+    }
+}
